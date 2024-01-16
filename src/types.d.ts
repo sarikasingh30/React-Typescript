@@ -1,6 +1,6 @@
 type AddTodo = (newTodo: string) => void;
 type RemoveTodo = (todoToRemove: Todo) => void;
-type EditTodo = (todoToEdit: string,eid:number) => void;
+
 
 type Todo = {
   id:number
@@ -10,8 +10,4 @@ type Todo = {
 
 type ToggleComplete = (selectedTodo: Todo) => void;
 
-// type Option = {
-//   value: string;
-//   onClick: () => void;
-//   color?: string;
-// }
+

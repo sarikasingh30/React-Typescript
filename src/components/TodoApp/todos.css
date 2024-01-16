@@ -1,0 +1,16 @@
+.liB{
+    width: 99%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+label{
+    padding:2%;
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    justify-content:flex-start;
+}
+/* input{
+    margin-right: 1%;
+} */

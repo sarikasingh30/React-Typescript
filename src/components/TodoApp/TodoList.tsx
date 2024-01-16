@@ -5,21 +5,20 @@ interface TodoListProps {
   todos: Array<Todo>;
   toggleComplete: ToggleComplete;
   onRemoveTodo: RemoveTodo;
-  editTodo: EditTodo;
+  // editTodo: EditTodo;
 }
 
-export const TodoList: React.FC<TodoListProps> = ({ todos, toggleComplete, onRemoveTodo, editTodo }) => {
+export const TodoList: React.FC<TodoListProps> = ({ todos, toggleComplete, onRemoveTodo}) => {
   return (
-    <ul>
+    <div style={{width:"100%"}}>
      {todos.map(todo => (
        <TodoListItem
           key={todo.id}
           todo={todo}
           toggleComplete={toggleComplete}
           onRemoveTodo={onRemoveTodo}
-          editTodo={editTodo}
         />
      ))}
-    </ul>
+    </div>
   );
 };

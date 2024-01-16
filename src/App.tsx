@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import logo from './logo.svg';
+
 import "./App.css";
 import { Counter } from "./components/CounterApp/Counter";
 import { TodoForm } from "./components/TodoApp/TodoForm";
@@ -9,7 +9,7 @@ function App() {
   const [todos, setTodos] = useState<Array<Todo>>([])
 
   const toggleComplete: ToggleComplete = (selectedTodo) => {
-    const updatedTodos = todos.map((todo) => {
+    const updatedTodos:Array<Todo>  = todos.map((todo) => {
       if (todo === selectedTodo) {
         return { ...todo, isCompleted: !todo.isCompleted };
       }
@@ -28,36 +28,20 @@ function App() {
 
   const removeTodo: RemoveTodo = (todoToRemove) => {
     let updatedTodos: Array<Todo> = todos.filter(
-      (el) => el.title != todoToRemove.title
+      (el) => el.id != todoToRemove.id
     );
     setTodos(updatedTodos);
   };
 
-  const editTodo: EditTodo = (todoToEdit, eid) => {
-    let todoToUpdateIndex = todos.map((el) => {
-      if (el.id == eid) {
-        return { ...el, title: todoToEdit };
-      }
-      return el;
-    });
-    // console.log(todoToUpdateIndex)
-    setTodos(todoToUpdateIndex)
-  };
-
   return (
     <div className="App">
-      <Counter />
-      <h1 style={{textAlign:"center", margin:"auto"}}>Todo App</h1>
-      <div>
-        <TodoForm addTodo={addTodo} />
+     <Counter />
+      <div className="todog">
+        <h1 style={{textAlign:"center", margin:"auto"}}>Todo App</h1>
+         <TodoForm addTodo={addTodo} />
+         <TodoList todos={todos} toggleComplete={toggleComplete} onRemoveTodo={removeTodo}/>
       </div>
 
-      <TodoList
-        todos={todos}
-        toggleComplete={toggleComplete}
-        onRemoveTodo={removeTodo}
-        editTodo={editTodo}
-      />
     </div>
   );
 }
